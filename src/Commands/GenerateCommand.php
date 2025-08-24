@@ -78,10 +78,10 @@ class GenerateCommand extends Command
             ? $this->option('panel')
             : Select(
                 label: 'Which panel do you want to generate permissions/policies for?',
-                options: collect(app('filament.panels'))->keys()->toArray()
+                options: collect(app('filament')->getPanels())->keys()->toArray()
             );
 
-        app('filament')->setCurrentPanel(app('filament.panels')[$panel]);
+        app('filament')->setCurrentPanel(app('filament')->getPanel($panel));
 
         $this->determinGeneratorOptionAndEntities();
 
@@ -109,12 +109,12 @@ class GenerateCommand extends Command
             $this->widgetInfo($widgets->toArray());
         }
 
-        $this->resetConfigExclusionCondition($this->ignoreConfigExclude);
-
         if (app('filament')->hasTenancy() && Utils::isTenancyEnabled() && ($this->option('relationships') || $this->option('all'))) {
-            $this->generateRelationships(app('filament.panels')[$panel]);
+            $this->generateRelationships(app('filament')->getPanel($panel));
             $this->components->info('Successfully generated relationships for the given panel.');
         }
+
+        $this->resetConfigExclusionCondition($this->ignoreConfigExclude);
 
         return Command::SUCCESS;
     }

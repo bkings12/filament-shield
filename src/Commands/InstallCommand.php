@@ -31,7 +31,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
 
         $shouldSetPanelAsCentralApp = false;
 
-        $panel = app('filament.panels')[$this->argument('panel') ?? null];
+        $panel = app('filament')->getPanel($this->argument('panel') ?? null);
 
         $tenant = $this->option('tenant') ? config()->get('filament-shield.tenant_model') : null;
 

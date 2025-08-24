@@ -14,9 +14,12 @@ class Utils
 {
     public static function getFilamentAuthGuard(): string
     {
-        $panel = app(Panel::class);
-
-        return $panel ? $panel->getAuthGuard() : '';
+        try {
+            $panel = app('filament')->getCurrentPanel();
+            return $panel ? $panel->getAuthGuard() : '';
+        } catch (\Exception $e) {
+            return '';
+        }
     }
 
     public static function isResourcePublished(Panel $panel): bool
