@@ -3,21 +3,21 @@
 </a>
 
 <p align="center" class="flex items-center justify-center">
-    <a href="https://filamentadmin.com/docs/2.x/admin/installation">
-        <img alt="FILAMENT 8.x" src="https://img.shields.io/badge/FILAMENT-3.x-EBB304?style=for-the-badge">
+    <a href="https://filamentadmin.com/docs/3.x/admin/installation">
+        <img alt="FILAMENT 4.x" src="https://img.shields.io/badge/FILAMENT-4.x-EBB304?style=for-the-badge">
     </a>
     <a href="https://packagist.org/packages/bezhansalleh/filament-shield">
         <img alt="Packagist" src="https://img.shields.io/packagist/v/bezhansalleh/filament-shield.svg?style=for-the-badge&logo=packagist">
     </a>
-    <a href="https://github.com/bezhansalleh/filament-shield/actions?query=workflow%3Arun-tests+branch%3A3.x">
+    <a href="https://github.com/bezhansalleh/filament-shield/actions?query=workflow%3Arun-tests+branch%3A4.x">
         <img alt="Tests Passing" src="https://img.shields.io/github/actions/workflow/status/bezhansalleh/filament-shield/run-tests.yml?style=for-the-badge&logo=github&label=tests" class="filament-hidden">
     </a>
-    <a href="https://github.com/bezhansalleh/filament-shield/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3A3.x" class="filament-hidden">
+    <a href="https://github.com/bezhansalleh/filament-shield/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3A4.x" class="filament-hidden">
         <img alt="Code Style Passing" src="https://img.shields.io/github/actions/workflow/status/bezhansalleh/filament-shield/laravel-pint.yml?style=for-the-badge&logo=github&label=code%20style">
     </a>
 
 <a href="https://packagist.org/packages/bezhansalleh/filament-shield">
-    <img alt="Downloads" src="https://img.shields.io/packagist/dt/bezhansalleh/filament-shield.svg?style=for-the-badge" >
+    <img alt="Downloads" src="https://img.shields.io/badge/downloads-1.2M+-blue?style=for-the-badge" >
     </a>
 </p>
 
@@ -40,11 +40,18 @@ The easiest and most intuitive way to add access management to your Filament Pan
 
 ## Compatibility
 
-| Package Version | Filament Version |
-|-----------------|------------------|
-| [2.x](https://github.com/bezhanSalleh/filament-shield/tree/2.x)             | 2.x              |
-| **3.x**            | **3.x**             |
-| [4.x](https://github.com/bezhanSalleh/filament-shield/tree/4.x)             | 4.x              |
+| Package Version | Filament Version | Laravel Version | PHP Version |
+|-----------------|------------------|-----------------|-------------|
+| [2.x](https://github.com/bezhanSalleh/filament-shield/tree/2.x)             | 2.x              | 9.x             | ^8.1        |
+| [3.x](https://github.com/bezhanSalleh/filament-shield/tree/3.x)             | 3.x              | 10.x            | ^8.1        |
+| **4.x**            | **4.x**             | **12.x**            | **^8.2**        |
+
+## Requirements
+
+- **PHP:** ^8.2
+- **Laravel:** ^12.0
+- **Filament:** ^4.0
+- **Spatie Laravel Permission:** ^6.0
 
 <div class="filament-hidden">
 <b>Table of Contents</b>

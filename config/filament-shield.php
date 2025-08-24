@@ -12,6 +12,8 @@ return [
         'show_model_path' => true,
         'is_scoped_to_tenant' => true,
         'cluster' => null,
+        'navigation_icon' => 'heroicon-o-shield-check',
+        'navigation_label' => 'Shield',
     ],
 
     'tenant_model' => null,
@@ -87,6 +89,11 @@ return [
 
     'register_role_policy' => [
         'enabled' => true,
+    ],
+
+    'filament_4_compatibility' => [
+        'use_app_helpers' => true,
+        'panel_resolution' => 'app',
     ],
 
 ];

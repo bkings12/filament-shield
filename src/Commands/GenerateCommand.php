@@ -4,7 +4,6 @@ namespace BezhanSalleh\FilamentShield\Commands;
 
 use BezhanSalleh\FilamentShield\Facades\FilamentShield;
 use BezhanSalleh\FilamentShield\Support\Utils;
-use Filament\Facades\Filament;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -79,10 +78,10 @@ class GenerateCommand extends Command
             ? $this->option('panel')
             : Select(
                 label: 'Which panel do you want to generate permissions/policies for?',
-                options: collect(Filament::getPanels())->keys()->toArray()
+                options: collect(app('filament.panels'))->keys()->toArray()
             );
 
-        Filament::setCurrentPanel(Filament::getPanel($panel));
+        app('filament')->setCurrentPanel(app('filament.panels')[$panel]);
 
         $this->determinGeneratorOptionAndEntities();
 
@@ -112,8 +111,8 @@ class GenerateCommand extends Command
 
         $this->resetConfigExclusionCondition($this->ignoreConfigExclude);
 
-        if (Filament::hasTenancy() && Utils::isTenancyEnabled() && ($this->option('relationships') || $this->option('all'))) {
-            $this->generateRelationships(Filament::getPanel($panel));
+        if (app('filament')->hasTenancy() && Utils::isTenancyEnabled() && ($this->option('relationships') || $this->option('all'))) {
+            $this->generateRelationships(app('filament.panels')[$panel]);
             $this->components->info('Successfully generated relationships for the given panel.');
         }
 

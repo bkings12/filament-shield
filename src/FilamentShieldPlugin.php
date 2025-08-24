@@ -42,6 +42,16 @@ class FilamentShieldPlugin implements Plugin
         //
     }
 
+    public function getResources(): ?array
+    {
+        return app(FilamentShield::class)->getResources();
+    }
+
+    public function getLocalizedResourceLabel(string $entity): string
+    {
+        return app(FilamentShield::class)->getLocalizedResourceLabel($entity);
+    }
+
     public static function get(): static
     {
         /** @var static $plugin */

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BezhanSalleh\FilamentShield\Commands;
 
-use Filament\Facades\Filament;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Support\Facades\Process;
@@ -32,7 +31,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
 
         $shouldSetPanelAsCentralApp = false;
 
-        $panel = Filament::getPanel($this->argument('panel') ?? null);
+        $panel = app('filament.panels')[$this->argument('panel') ?? null];
 
         $tenant = $this->option('tenant') ? config()->get('filament-shield.tenant_model') : null;
 

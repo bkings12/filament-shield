@@ -4,8 +4,7 @@ namespace BezhanSalleh\FilamentShield\Support;
 
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use BezhanSalleh\FilamentShield\FilamentShield;
-use Filament\Facades\Filament;
-use Filament\Pages\SubNavigationPosition;
+use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Panel;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
@@ -15,7 +14,9 @@ class Utils
 {
     public static function getFilamentAuthGuard(): string
     {
-        return Filament::getCurrentPanel()?->getAuthGuard() ?? '';
+        $panel = app(Panel::class);
+
+        return $panel ? $panel->getAuthGuard() : '';
     }
 
     public static function isResourcePublished(Panel $panel): bool
@@ -35,7 +36,9 @@ class Utils
 
     public static function getSubNavigationPosition(): ?SubNavigationPosition
     {
-        return config('filament-shield.shield_resource.sub_navigation_position');
+        $position = config('filament-shield.shield_resource.sub_navigation_position');
+
+        return $position ? SubNavigationPosition::from($position) : null;
     }
 
     public static function isResourceNavigationRegistered(): bool

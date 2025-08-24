@@ -2,7 +2,6 @@
 
 namespace BezhanSalleh\FilamentShield\Commands;
 
-use Filament\Facades\Filament;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
@@ -25,9 +24,7 @@ class PublishCommand extends Command
             return Command::FAILURE;
         }
 
-        Filament::setCurrentPanel(Filament::getPanel($this->argument('panel')));
-
-        $panel = Filament::getCurrentPanel();
+        $panel = app('filament')->getPanel($this->argument('panel'));
 
         $resourceDirectories = $panel->getResourceDirectories();
         $resourceNamespaces = $panel->getResourceNamespaces();

@@ -3,7 +3,6 @@
 namespace BezhanSalleh\FilamentShield\Middleware;
 
 use Closure;
-use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,8 +16,8 @@ class SyncShieldTenant
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Filament::hasTenancy()) {
-            setPermissionsTeamId(Filament::getTenant());
+        if (app('filament')->hasTenancy()) {
+            setPermissionsTeamId(app('filament')->getTenant());
         }
 
         return $next($request);

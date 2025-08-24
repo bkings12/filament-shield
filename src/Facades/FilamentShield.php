@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static void generateForResource(array $entity)
  * @method static void generateForPage(string $page)
  * @method static void generateForWidget(string $widget)
- * @method static void createRole(string|null $name = null)
+ * @method static \Spatie\Permission\Models\Role createRole(string|null $name = null, int|string|null $tenantId = null)
  * @method static array|null getResources()
  * @method static string getLocalizedResourceLabel(string $entity)
  * @method static string getLocalizedResourcePermissionLabel(string $permission)

@@ -4,7 +4,6 @@ namespace BezhanSalleh\FilamentShield;
 
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Closure;
-use Filament\Facades\Filament;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Filament\Widgets\TableWidget;
 use Filament\Widgets\Widget;
@@ -129,16 +128,7 @@ class FilamentShield
      */
     public function getResources(): ?array
     {
-        $resources = Filament::getResources();
-        if (Utils::discoverAllResources()) {
-            $resources = [];
-            foreach (Filament::getPanels() as $panel) {
-                $resources = array_merge($resources, $panel->getResources());
-            }
-            $resources = array_unique($resources);
-        }
-
-        return collect($resources)
+        $resources = collect(app('filament.resources'))
             ->reject(function ($resource) {
                 if (Utils::isGeneralExcludeEnabled()) {
                     return in_array(
@@ -167,19 +157,22 @@ class FilamentShield
      */
     public static function getLocalizedResourceLabel(string $entity): string
     {
-        $resources = Filament::getResources();
-        if (Utils::discoverAllResources()) {
-            $resources = [];
-            foreach (Filament::getPanels() as $panel) {
-                $resources = array_merge($resources, $panel->getResources());
-            }
-            $resources = array_unique($resources);
-        }
-        $label = collect($resources)->filter(function ($resource) use ($entity) {
-            return $resource === $entity;
-        })->first()::getModelLabel();
+        $resources = collect(app('filament.resources'))
+            ->reject(function ($resource) {
+                if (Utils::isGeneralExcludeEnabled()) {
+                    return in_array(
+                        Str::of($resource)->afterLast('\\'),
+                        Utils::getExcludedResouces()
+                    );
+                }
+            })
+            ->mapWithKeys(function ($resource) {
+                return [
+                    $resource => $resource::getModelLabel(),
+                ];
+            })->toArray();
 
-        return str($label)->headline()->toString();
+        return $resources[$entity] ?? Str::of($entity)->headline()->toString();
     }
 
     /**
@@ -197,35 +190,8 @@ class FilamentShield
      */
     public static function getPages(): ?array
     {
-        $pages = Filament::getPages();
-
-        if (Utils::discoverAllPages()) {
-            $pages = [];
-
-            foreach (Filament::getPanels() as $panel) {
-                $pages = array_merge($pages, $panel->getPages());
-            }
-
-            if (Filament::hasTenantProfile()) {
-                $pages[] = Filament::getTenantProfilePage();
-            }
-
-            $pages = array_unique($pages);
-        }
-
-        $clusters = collect($pages)
-            ->map(fn ($page) => $page::getCluster())
-            ->reject(fn ($cluster) => is_null($cluster))
-            ->unique()
-            ->values()
-            ->toArray();
-
-        return collect($pages)
-            ->reject(function ($page) use ($clusters) {
-                if (in_array($page, $clusters)) {
-                    return true;
-                }
-
+        $pages = collect(app('filament.pages'))
+            ->reject(function ($page) {
                 if (Utils::isGeneralExcludeEnabled()) {
                     return in_array(Str::afterLast($page, '\\'), Utils::getExcludedPages());
                 }
@@ -267,16 +233,7 @@ class FilamentShield
      */
     public static function getWidgets(): ?array
     {
-        $widgets = Filament::getWidgets();
-        if (Utils::discoverAllWidgets()) {
-            $widgets = [];
-            foreach (Filament::getPanels() as $panel) {
-                $widgets = array_merge($widgets, $panel->getWidgets());
-            }
-            $widgets = array_unique($widgets);
-        }
-
-        return collect($widgets)
+        $widgets = collect(app('filament.widgets'))
             ->reject(function ($widget) {
                 if (Utils::isGeneralExcludeEnabled()) {
                     return in_array(

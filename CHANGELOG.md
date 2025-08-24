@@ -2,6 +2,30 @@
 
 All notable changes to `filament-shield` will be documented in this file.
 
+## 4.0.0 - 2025-01-XX
+
+### What's Changed
+
+* **BREAKING CHANGE**: Updated to support Laravel 12 and Filament 4
+* **BREAKING CHANGE**: Minimum PHP version increased to ^8.2
+* **BREAKING CHANGE**: Minimum Laravel version increased to ^12.0
+* **BREAKING CHANGE**: Minimum Filament version increased to ^4.0
+* **BREAKING CHANGE**: Replaced deprecated `Filament\Facades\Filament` with new Filament 4 approach
+* **BREAKING CHANGE**: Replaced deprecated `Forms\Components\Grid` with `Forms\Components\Columns`
+* **BREAKING CHANGE**: Updated testing dependencies for PHPUnit 11 and Pest 3
+* **BREAKING CHANGE**: Updated package tools and other dependencies for Laravel 12 compatibility
+* **ENHANCEMENT**: Added new configuration options for Filament 4 compatibility
+* **ENHANCEMENT**: Improved panel resolution and tenant handling for Filament 4
+
+### Migration Guide
+
+To upgrade from version 3.x to 4.x:
+
+1. Ensure your application is running Laravel 12+ and PHP 8.2+
+2. Update your Filament installation to version 4.x
+3. Update your `composer.json` to require the new version
+4. Clear your application cache and reinstall dependencies
+
 ## 3.3.9 - 2025-07-10
 
 ### What's Changed
@@ -1228,6 +1252,259 @@ If you've previously published `RoleResource`, please republish it using `shield
 - 
 - 
 - 
+- - - --ignore-config-exclude  Ignore config `exclude` option during generation
+    
+  
+- - 
+  
+- 
+- - 
+  
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 - - - --resource[=RESOURCE]    One or many resources separated by comma (,)
     
   
@@ -1735,512 +2012,6 @@ If you've previously published `RoleResource`, please republish it using `shield
 - 
 - 
 - - - --widget[=WIDGET]        One or many widgets separated by comma (,)
-    
-  
-- - 
-  
-- 
-- - 
-  
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - - --exclude                Exclude the given entities during generation
-    
-  
-- - 
-  
-- 
-- - 
-  
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - 
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - - --ignore-config-exclude  Ignore config `exclude` option during generation
     
   
 - - 

@@ -3,8 +3,8 @@
 namespace BezhanSalleh\FilamentShield\Traits;
 
 use BezhanSalleh\FilamentShield\Support\Utils;
-use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 trait HasPageShield
@@ -42,7 +42,7 @@ trait HasPageShield
 
     protected function getShieldRedirectPath(): string
     {
-        return Filament::getUrl();
+        return app('filament')->getCurrentPanel()?->getUrl() ?? '/';
     }
 
     protected static function getPermissionName(): string
@@ -63,6 +63,6 @@ trait HasPageShield
 
     public static function canAccess(array $parameters = []): bool
     {
-        return Filament::auth()->user()->can(static::getPermissionName());
+        return Gate::allows(static::getPermissionName());
     }
 }

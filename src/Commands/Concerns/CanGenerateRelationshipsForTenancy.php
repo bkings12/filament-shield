@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace BezhanSalleh\FilamentShield\Commands\Concerns;
 
 use BezhanSalleh\FilamentShield\Stringer;
-use Filament\Facades\Filament;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Builder;
@@ -18,11 +17,11 @@ trait CanGenerateRelationshipsForTenancy
         collect($panel->getResources())
             ->values()
             ->filter(function ($resource): bool {
-                return filled($this->guessResourceModelRelationshipType($resource::getModel(), Filament::getTenantModel()));
+                return filled($this->guessResourceModelRelationshipType($resource::getModel(), app('filament.tenant-model')));
             })
             ->map(function ($resource) {
                 $resource = resolve($resource);
-                $tenantModel = Filament::getTenantModel();
+                $tenantModel = app('filament.tenant-model');
 
                 return [
                     'model' => $model = $resource::getModel(),
